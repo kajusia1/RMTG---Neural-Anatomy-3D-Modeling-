@@ -332,9 +332,9 @@ def build_3d_mesh_data(rat, max_edge_length=0.2, buffer_size=0.1, max_3d_edge_le
 
     fig.update_layout(
         scene=dict(
-            xaxis_title='X',
-            yaxis_title='Y',
-            zaxis_title='Z',
+            xaxis_title='Lateral-Medial',
+            yaxis_title='Anterior-Posterior',
+            zaxis_title='Dorso-Ventral',
             aspectmode='data'
         ),
         title=f'RMTg 3D Reconstruction - rat {rat}'
