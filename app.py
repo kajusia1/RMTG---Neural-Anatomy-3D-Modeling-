@@ -9,7 +9,7 @@ import os
 import re
 import ast
 
-st.set_page_config(page_title="RMTg 3D Analysis", layout="wide")
+st.set_page_config(page_title="RMTg Neuron Location", layout="wide")
 
 # ==========================================
 # 1. FUNKCJE POMOCNICZE I KALIBRACJA Z NOTEBOOKA
@@ -252,7 +252,7 @@ def build_3d_mesh_data(rat, max_3d_edge_length=1.0):
 # 3. INTERFEJS UŻYTKOWNIKA (STREAMLIT UI)
 # ==========================================
 
-st.title("Verify Neuron Location in RMTg 3D")
+st.title("Verify Neuron Location in RMTg")
 
 st.sidebar.header("Model Settings")
 rat_id = st.sidebar.number_input("Rat ID", value=2, step=1, min_value=2, max_value=8)
