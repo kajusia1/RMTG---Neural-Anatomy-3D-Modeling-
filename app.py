@@ -159,7 +159,8 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
     fig, ax = plt.subplots(figsize=(6, 5), facecolor="white")
     ax.set_facecolor("white")
 
-    img_path = rf"paxinos\{bregma}.png"
+    # img_path = rf"paxinos\{bregma}.png"
+    img_path = os.path.join("paxinos", f"{bregma}.png")
     if os.path.exists(img_path):
         img = plt.imread(img_path)
         ax.imshow(img, extent=[-8, 8, -11, 0], aspect="equal", zorder=0)
