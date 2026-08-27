@@ -159,8 +159,7 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
     fig, ax = plt.subplots(figsize=(6, 5), facecolor="white")
     ax.set_facecolor("white")
 
-    # img_path = rf"paxinos\{bregma}.png"
-    img_path = os.path.join("paxinos", f"{bregma}.png")
+    img_path = rf"paxinos\{bregma}.png"
     if os.path.exists(img_path):
         img = plt.imread(img_path)
         ax.imshow(img, extent=[-8, 8, -11, 0], aspect="equal", zorder=0)
@@ -487,9 +486,9 @@ def build_3d_mesh_data(rat, max_edge_length=0.2, buffer_size=0.1, max_3d_edge_le
 
     fig.update_layout(
         scene=dict(
-            xaxis_title='Lateral-Medial',
-            yaxis_title='Anterior-Posterior',
-            zaxis_title='Dorso-Ventral',
+        xaxis_title='Lateral-Medial',
+        yaxis_title='Dorso-Ventral',
+        zaxis_title='Anterior-Posterior',
             aspectmode='data'
         ),
         # title=f'RMTg 3D Reconstruction - rat {rat}'
@@ -521,8 +520,8 @@ if fig is None or len(global_points) == 0:
 else:
     st.sidebar.header("Target Neuron Coordinates")
     target_x = st.sidebar.number_input("Lateral-Medial (X)", value=0.0, format="%.3f")
-    target_y = st.sidebar.number_input("Anterior-Posterior (Y)", value=-7.60, format="%.3f")
-    target_z = st.sidebar.number_input("Dorso-Ventral (Z)", value=-7.00, format="%.3f")
+    target_y = st.sidebar.number_input("Dorso-Ventral (Y)", value=-7.60, format="%.3f")
+    target_z = st.sidebar.number_input("Anterior-Posterior (Z)", value=-7.00, format="%.3f")
 
     target_point = (target_x, target_y, target_z)
     inside = is_point_in_tetrahedron(target_point, tetrahedrons, global_points)
