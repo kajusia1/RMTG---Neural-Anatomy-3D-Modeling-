@@ -37,7 +37,7 @@ def calibrate_with_rotation(root, ref_cor):
         cor_dict[i] = (x, y, ref_cor[2])
 
     target_x3, target_y3 = ref_cor[0]
-    target_x4, target_y4 = ref_cor]
+    target_x4, target_y4 = ref_cor[1]
     target_y3 = -target_y3
     target_y4 = -target_y4
     target_z = ref_cor[2]
@@ -125,7 +125,7 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
 
     x_new = []
     y_new = []
-    bregma = cords][2][0]
+    bregma = cords[1][2][0]
 
     for marker, (x, y, z) in cords.items():
         if marker in [1, 2, 7]:
@@ -159,6 +159,7 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
     fig, ax = plt.subplots(figsize=(6, 5), facecolor="white")
     ax.set_facecolor("white")
 
+    # img_path = rf"paxinos\{bregma}.png"
     img_path = os.path.join("paxinos", f"{bregma}.png")
     if os.path.exists(img_path):
         img = plt.imread(img_path)
@@ -209,7 +210,7 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
         )
 
     if target_point is not None:
-        ax.scatter([target_point[0]], [target_point]], color="orange", s=30, zorder=5, edgecolors="black", linewidth=0.5)
+        ax.scatter([target_point[0]], [target_point[1]], color="orange", s=30, zorder=5, edgecolors="black", linewidth=0.5)
 
     if show_legend:
         legend_elements = [
