@@ -32,7 +32,7 @@ def get_markers_by_type(root, marker_number):
 
 def calibrate_with_rotation(root, ref_cor):
     cor_dict = {}
-    for i in , 2, 3, 4, 5, 6]:
+    for i in [1, 2, 3, 4, 5, 6]:
         x, y, z = get_markers_by_type(root, i)
         cor_dict[i] = (x, y, ref_cor[2])
 
@@ -128,7 +128,7 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
     bregma = cords][2][0]
 
     for marker, (x, y, z) in cords.items():
-        if marker in , 2, 7]:
+        if marker in [1, 2, 7]:
             x_new = np.concatenate([x_new, x])
             y_new = np.concatenate([y_new, y])
 
