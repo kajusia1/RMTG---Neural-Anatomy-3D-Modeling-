@@ -15,9 +15,7 @@ import ast
 
 st.set_page_config(page_title="RMTg Neuron Location", layout="wide")
 
-# ==========================================
 # 1. FUNKCJE POMOCNICZE I KALIBRACJA
-# ==========================================
 
 def get_markers_by_type(root, marker_number):
     x, y, z = [], [], []
@@ -111,12 +109,7 @@ def get_cords(rat, slice_group, slice_id):
     root = tree.getroot()
     return calibrate_with_rotation(root, ref_cor)
 
-# ==========================================
 # 2. GENEROWANIE GEOMETRII 2D I 3D
-# ==========================================
-# ==========================================
-# 2. GENEROWANIE GEOMETRII 2D I 3D
-# ==========================================
 
 def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4, x_limits=[-8,8], y_limits=[-11,0], see_neurons=False, target_point=None, show_legend=False):
     cords = get_cords(rat=rat, slice_group=slice_group, slice_id=slice_id)
@@ -497,9 +490,7 @@ def build_3d_mesh_data(rat, max_edge_length=0.2, buffer_size=0.1, max_3d_edge_le
 
     return fig, np.array(global_points), active_tetrahedrons, slice_metadata
 
-# ==========================================
-# 3. INTERFEJS UŻYTKOWNIKA (STREAMLIT UI)
-# ==========================================
+# 3. STREAMLIT UI
 
 st.title("Verify Neuron Location in RMTg")
 
