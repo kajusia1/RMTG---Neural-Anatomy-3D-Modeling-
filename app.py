@@ -480,7 +480,7 @@ def build_3d_mesh_data(rat, max_edge_length=0.2, buffer_size=0.1, max_3d_edge_le
 
     fig.update_layout(
         scene=dict(
-        xaxis_title='Lateral-Medial',
+        xaxis_title='Medial-Lateral',
         yaxis_title='Dorso-Ventral',
         zaxis_title='Anterior-Posterior',
             aspectmode='data'
@@ -511,7 +511,7 @@ if fig is None or len(global_points) == 0:
     st.error(f"No data or reference file available for folder 'rat{rat_id}'")
 else:
     st.sidebar.header("Target Neuron Coordinates")
-    target_x = st.sidebar.number_input("Lateral-Medial (X)", value=0.0, format="%.3f")
+    target_x = st.sidebar.number_input("Medial-Lateral (X)", value=0.0, format="%.3f")
     target_y = st.sidebar.number_input("Dorso-Ventral (Y)", value=-7.60, format="%.3f")
     target_z = st.sidebar.number_input("Anterior-Posterior (Z)", value=-7.00, format="%.3f")
 
