@@ -215,6 +215,8 @@ def delulu_pax(rat, slice_group, slice_id, max_edge_length=0.4, buffer_size=0.4,
         ax.set_xlim(x_limits)
     if y_limits is not None:
         ax.set_ylim(y_limits)
+    ax.set_xlabel("ML [mm]", fontsize=10, color='#222222')
+    ax.set_ylabel("DV [mm]", fontsize=10, color='#222222')
 
     # ax.set_title(f"Bregma: {bregma} (Group: {slice_group}, Slice: {slice_id})", fontsize=10, pad=10)
     ax.set_aspect("equal")
@@ -480,9 +482,9 @@ def build_3d_mesh_data(rat, max_edge_length=0.2, buffer_size=0.1, max_3d_edge_le
 
     fig.update_layout(
         scene=dict(
-        xaxis_title='Medial-Lateral [mm]',
-        yaxis_title='Dorso-Ventral [mm]',
-        zaxis_title='Anterior-Posterior [mm]',
+        xaxis_title='ML [mm]',
+        yaxis_title='DV [mm]',
+        zaxis_title='AP [mm]',
             aspectmode='data'
         ),
         # title=f'RMTg 3D Reconstruction - rat {rat}'
@@ -511,9 +513,9 @@ if fig is None or len(global_points) == 0:
     st.error(f"No data or reference file available for folder 'rat{rat_id}'")
 else:
     st.sidebar.header("Target Neuron Coordinates")
-    target_x = st.sidebar.number_input("Medial-Lateral (X)", value=0.0, format="%.3f")
-    target_y = st.sidebar.number_input("Dorso-Ventral (Y)", value=-7.60, format="%.3f")
-    target_z = st.sidebar.number_input("Anterior-Posterior (Z)", value=-7.00, format="%.3f")
+    target_x = st.sidebar.number_input("Medial-Lateral (ML)", value=0.0, format="%.3f")
+    target_y = st.sidebar.number_input("Dorso-Ventral (DV)", value=-7.60, format="%.3f")
+    target_z = st.sidebar.number_input("Anterior-Posterior (AP)", value=-7.00, format="%.3f")
 
     target_point = (target_x, target_y, target_z)
     inside = is_point_in_tetrahedron(target_point, tetrahedrons, global_points)
@@ -543,7 +545,7 @@ else:
         sorted_slices = sorted(slice_meta, key=lambda s: abs(s["z"] - target_z))
         closest_slices = sorted_slices[:2]
 
-        st.subheader("Closest Coronal Slices (Atlas Projection) [mm]")
+        st.subheader("Closest Coronal Slices (Atlas Projection)")
         cols = st.columns(len(closest_slices))
 
         for idx, s_info in enumerate(closest_slices):
